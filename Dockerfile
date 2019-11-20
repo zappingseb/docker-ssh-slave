@@ -88,9 +88,9 @@ RUN apt-get update \
 	&& rm -rf /var/lib/apt/lists/*
 RUN R -e "install.packages(c('ps'), repos='http://cran.uni-muenster.de/')"
 
-RUN R -e "install.packages('tidyverse', repos='http://cran.uni-muenster.de/'))"
-RUN R -e "install.packages('boot', repos='http://cran.uni-muenster.de/'))"
-RUN R -e "install.packages('RTest', repos='http://cran.uni-muenster.de/'))"
+RUN R -e "install.packages('tidyverse', repos='http://cran.uni-muenster.de/')"
+RUN R -e "install.packages('boot', repos='http://cran.uni-muenster.de/')"
+RUN R -e "install.packages('RTest', repos='http://cran.uni-muenster.de/')"
 
 # NTK dependences
 RUN R -e "install.packages('http://cran.r-project.org/src/contrib/Archive/BiasedUrn/BiasedUrn_1.06.tar.gz',repos=NULL, method='wget', extra='--no-check-certificate')"
