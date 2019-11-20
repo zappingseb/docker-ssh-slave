@@ -46,9 +46,9 @@ RUN sed -i /etc/ssh/sshd_config \
         -e 's/#LogLevel.*/LogLevel INFO/' && \
     mkdir /var/run/sshd
 
-RUN sudo add-apt-repository 'deb [arch=amd64,i386] https://cran.rstudio.com/bin/linux/ubuntu xenial/'
+RUN add-apt-repository 'deb [arch=amd64,i386] https://cran.rstudio.com/bin/linux/ubuntu xenial/'
 
-RUN sudo apt-get update \
+RUN apt-get update \
     && apt-get install -y r-base r-cran-rjava
 RUN R -e "install.packages(c('ps'), repos='http://cran.uni-muenster.de/')"
 
