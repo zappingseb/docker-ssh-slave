@@ -123,20 +123,51 @@ RUN R -e "install.packages(c('rlang','gdata', 'GGally', 'gmodels', 'gridExtra', 
 RUN R -e "install.packages(c('ggpubr','survminer'), repos='http://cran.uni-muenster.de/')"
 
 # Minimal texlive
-RUN apt-get update -q \
-    && apt-get install -t unstable --no-install-recommends -qy build-essential wget libfontconfig1 \
-    && rm -rf /var/lib/apt/lists/*
-
-# Install TexLive with scheme-basic
-RUN wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz; \
-	mkdir /install-tl-unx; \
-	tar -xvf install-tl-unx.tar.gz -C /install-tl-unx --strip-components=1; \
-    echo "selected_scheme scheme-basic" >> /install-tl-unx/texlive.profile; \
-	/install-tl-unx/install-tl -profile /install-tl-unx/texlive.profile; \
-    rm -r /install-tl-unx; \
-	rm install-tl-unx.tar.gz
-
-ENV PATH="/usr/local/texlive/2019/bin/x86_64-linux:${PATH}"
+## From the Build-Depends of the Debian R package, plus subversion
+RUN apt-get update -qq \
+	&& apt-get install -t unstable -y --no-install-recommends \
+		bash-completion \
+		bison \
+		debhelper \
+		g++ \
+		gcc \
+		gdb \
+		gfortran \
+		groff-base \
+		libblas-dev \
+		libbz2-dev \
+		libcairo2-dev/unstable \
+		libcurl4-openssl-dev \
+		libjpeg-dev \
+		liblapack-dev \
+		liblzma-dev \
+		libncurses5-dev \
+		libpango1.0-dev \
+		libpcre3-dev \
+		libpng-dev \
+		libreadline-dev \
+		libtiff5-dev \
+		libx11-dev \
+		libxt-dev \
+		mpack \
+		subversion \
+		tcl8.6-dev \
+		texinfo \
+		texlive-base \
+		texlive-extra-utils \
+		texlive-fonts-extra \
+		texlive-fonts-recommended \
+		texlive-generic-recommended \
+		texlive-latex-base \
+		texlive-latex-extra \
+		texlive-latex-recommended \
+		tk8.6-dev \
+		x11proto-core-dev \
+		xauth \
+		xdg-utils \
+		xfonts-base \
+		xvfb \
+		zlib1g-dev
 
 # Jenkins tasks
 VOLUME "${JENKINS_AGENT_HOME}" "/tmp" "/run" "/var/run"
