@@ -169,6 +169,8 @@ RUN apt-get update -qq \
 		xvfb \
 		zlib1g-dev
 
+RUN R -e "install.packages('RTest', repos='http://cran.uni-muenster.de/')"
+
 # Jenkins tasks
 VOLUME "${JENKINS_AGENT_HOME}" "/tmp" "/run" "/var/run"
 WORKDIR "${JENKINS_AGENT_HOME}"
