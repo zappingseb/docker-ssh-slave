@@ -171,7 +171,8 @@ RUN apt-get update -qq \
 
 RUN apt-get update -qq \
 	&& apt-get install -t unstable -y --no-install-recommends \
-	openssl-dev \
+	openssl \
+	libssl-dev \
 	libmagick++-dev \
 	libxml2-dev \
 	libgs-dev
