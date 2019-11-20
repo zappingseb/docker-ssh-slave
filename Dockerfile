@@ -169,6 +169,13 @@ RUN apt-get update -qq \
 		xvfb \
 		zlib1g-dev
 
+RUN RUN apt-get update -qq \
+	&& apt-get install -t unstable -y --no-install-recommends \
+	openssl \
+	libmagick++-dev \
+	libxml2-dev \
+	libgs-dev
+
 RUN R -e "install.packages('RTest', repos='http://cran.uni-muenster.de/')"
 
 # Jenkins tasks
