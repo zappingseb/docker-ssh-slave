@@ -122,6 +122,23 @@ RUN R -e "install.packages('https://cran.r-project.org/src/contrib/survminer_0.4
 RUN R -e "install.packages(c('rlang','gdata', 'GGally', 'gmodels', 'gridExtra', 'Hmisc'), repos='http://cran.uni-muenster.de/')"
 RUN R -e "install.packages(c('ggpubr','survminer'), repos='http://cran.uni-muenster.de/')"
 
+# Minimal texlive
+RUN apt-get update -q \
+    && apt-get install -qy build-essential wget libfontconfig1 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install TexLive with scheme-basic
+RUN wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz; \
+	mkdir /install-tl-unx; \
+	tar -xvf install-tl-unx.tar.gz -C /install-tl-unx --strip-components=1; \
+    echo "selected_scheme scheme-basic" >> /install-tl-unx/texlive.profile; \
+	/install-tl-unx/install-tl -profile /install-tl-unx/texlive.profile; \
+    rm -r /install-tl-unx; \
+	rm install-tl-unx.tar.gz
+
+ENV PATH="/usr/local/texlive/2017/bin/x86_64-linux:${PATH}"
+
+# Jenkins tasks
 VOLUME "${JENKINS_AGENT_HOME}" "/tmp" "/run" "/var/run"
 WORKDIR "${JENKINS_AGENT_HOME}"
 
