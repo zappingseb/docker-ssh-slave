@@ -45,7 +45,7 @@ RUN sed -i /etc/ssh/sshd_config \
         -e 's/#SyslogFacility.*/SyslogFacility AUTH/' \
         -e 's/#LogLevel.*/LogLevel INFO/' && \
     mkdir /var/run/sshd
-
+RUN apt-get update && apt-get install -y software-properties-common
 RUN add-apt-repository 'deb [arch=amd64,i386] https://cran.rstudio.com/bin/linux/ubuntu xenial/'
 
 RUN apt-get update \
