@@ -120,6 +120,7 @@ RUN R -e "install.packages('https://cran.r-project.org/src/contrib/Archive/survM
 RUN R -e "install.packages('https://cran.r-project.org/src/contrib/survminer_0.4.6.tar.gz',repos=NULL, method='wget', extra='--no-check-certificate')"
 
 RUN R -e "install.packages(c('rlang','gdata', 'GGally', 'gmodels', 'gridExtra', 'Hmisc'), repos='http://cran.uni-muenster.de/')"
+RUN R -e "install.packages(c('ggpubr','survminer'), repos='http://cran.uni-muenster.de/')"
 
 VOLUME "${JENKINS_AGENT_HOME}" "/tmp" "/run" "/var/run"
 WORKDIR "${JENKINS_AGENT_HOME}"
