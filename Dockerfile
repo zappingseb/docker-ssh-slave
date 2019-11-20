@@ -124,7 +124,7 @@ RUN R -e "install.packages(c('ggpubr','survminer'), repos='http://cran.uni-muens
 
 # Minimal texlive
 RUN apt-get update -q \
-    && apt-get install -t unstable--no-install-recommends -qy build-essential wget libfontconfig1 \
+    && apt-get install -t unstable --no-install-recommends -qy build-essential wget libfontconfig1 \
     && rm -rf /var/lib/apt/lists/*
 
 # Install TexLive with scheme-basic
