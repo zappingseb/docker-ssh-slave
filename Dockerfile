@@ -119,7 +119,7 @@ RUN R -e "install.packages('https://cran.r-project.org/src/contrib/km.ci_0.5-2.t
 RUN R -e "install.packages('https://cran.r-project.org/src/contrib/Archive/survMisc/survMisc_0.5.4.tar.gz',repos=NULL, method='wget', extra='--no-check-certificate')"
 RUN R -e "install.packages('https://cran.r-project.org/src/contrib/survminer_0.4.6.tar.gz',repos=NULL, method='wget', extra='--no-check-certificate')"
 
-RUN R -e "install.packages(c('gdata', 'GGally', 'gmodels', 'gridExtra', 'Hmisc'), repos='http://cran.uni-muenster.de/')"
+RUN R -e "install.packages(c('rlang','gdata', 'GGally', 'gmodels', 'gridExtra', 'Hmisc'), repos='http://cran.uni-muenster.de/')"
 
 VOLUME "${JENKINS_AGENT_HOME}" "/tmp" "/run" "/var/run"
 WORKDIR "${JENKINS_AGENT_HOME}"
