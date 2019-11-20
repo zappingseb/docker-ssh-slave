@@ -96,7 +96,8 @@ RUN R -e "install.packages('RTest', repos='http://cran.uni-muenster.de/')"
 RUN R -e "install.packages('http://cran.r-project.org/src/contrib/Archive/BiasedUrn/BiasedUrn_1.06.tar.gz',repos=NULL, method='wget', extra='--no-check-certificate')"
 RUN R -e "install.packages('http://cran.r-project.org/src/contrib/Archive/epiR/epiR_0.9-93.tar.gz',repos=NULL, method='wget', extra='--no-check-certificate')"
 RUN R -e "install.packages('http://cran.r-project.org/src/contrib/Archive/plotrix/plotrix_3.7-1.tar.gz',repos=NULL, method='wget', extra='--no-check-certificate')"
-RUN apt-get install -y -t unstable libiodbc2-dev r-cran-rodbc
+RUN apt-get update \
+	&& apt-get install -t unstable -y --no-install-recommends libiodbc2-dev r-cran-rodbc
 # RUN R -e "install.packages('https://cran.r-project.org/src/contrib/Archive/RODBC/RODBC_1.3-14.tar.gz',repos=NULL, method='wget', extra='--no-check-certificate')"
 RUN R -e "install.packages('http://cran.r-project.org/src/contrib/Archive/pROC/pROC_1.10.0.tar.gz',repos=NULL, method='wget', extra='--no-check-certificate')"
 RUN R -e "install.packages('http://cran.r-project.org/src/contrib/Archive/chron/chron_2.3-51.tar.gz',repos=NULL, method='wget', extra='--no-check-certificate')"
