@@ -169,6 +169,9 @@ RUN apt-get update -qq \
 		xvfb \
 		zlib1g-dev
 
+# devtools for check
+RUN R -e "install.packages(c('devtools'), repos='http://cran.uni-muenster.de/')"
+
 # Jenkins tasks
 VOLUME "${JENKINS_AGENT_HOME}" "/tmp" "/run" "/var/run"
 WORKDIR "${JENKINS_AGENT_HOME}"
