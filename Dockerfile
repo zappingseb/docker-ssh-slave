@@ -169,7 +169,7 @@ RUN apt-get update -qq \
 		xvfb \
 		zlib1g-dev
 
-RUN RUN apt-get update -qq \
+RUN apt-get update -qq \
 	&& apt-get install -t unstable -y --no-install-recommends \
 	openssl \
 	libmagick++-dev \
