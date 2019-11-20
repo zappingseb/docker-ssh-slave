@@ -47,7 +47,7 @@ RUN sed -i /etc/ssh/sshd_config \
     mkdir /var/run/sshd
 RUN apt-get update && apt-get install -y software-properties-common
 RUN add-apt-repository 'deb [arch=amd64,i386] https://cran.rstudio.com/bin/linux/ubuntu xenial/'
-
+RUN apt-get install -y apt-transport-https ca-certificates
 RUN apt-get update \
     && apt-get install -y r-base r-cran-rjava
 RUN R -e "install.packages(c('ps'), repos='http://cran.uni-muenster.de/')"
